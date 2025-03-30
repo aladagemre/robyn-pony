@@ -3,16 +3,13 @@ user_create_schema = {
     "properties": {
         "name": {"type": "string"},
         "email": {"type": "string"},
-        "password": {"type": "string", "minLength": 6}
+        "password": {"type": "string", "minLength": 6},
     },
-    "required": ["name", "email", "password"]
+    "required": ["name", "email", "password"],
 }
 
 user_login_schema = {
     "type": "object",
-    "properties": {
-        "email": {"type": "string"},
-        "password": {"type": "string"}
-    },
-    "required": ["email", "password"]
+    "properties": {"email": {"type": "string"}, "password": {"type": "string"}},
+    "required": ["email", "password"],
 }

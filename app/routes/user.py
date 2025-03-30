@@ -5,6 +5,7 @@ from ..utils.jwt import decode_token
 from ..utils.response import json_response
 from ..services.user_service import get_user_by_id
 
+
 def register_user_routes(app):
     @app.get("/me")
     def me(request):
@@ -27,4 +28,6 @@ def register_user_routes(app):
     @db_session
     def get_users(request):
         users = User.select()
-        return json_response([{"id": user.id, "name": user.name, "email": user.email} for user in users])
+        return json_response(
+            [{"id": user.id, "name": user.name, "email": user.email} for user in users]
+        )

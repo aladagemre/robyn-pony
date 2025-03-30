@@ -8,9 +8,11 @@ app = Robyn(__file__)
 register_auth_routes(app)
 register_user_routes(app)
 
+
 @app.get("/")
 def home():
     return "Robyn Modular App with PonyORM and JWT"
+
 
 if __name__ == "__main__":
     app.start(port=8000)

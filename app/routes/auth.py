@@ -6,6 +6,7 @@ from ..utils.jwt import create_token
 from ..schemas.user import user_create_schema, user_login_schema
 from ..services.user_service import create_user, get_user_by_email, verify_password
 
+
 def register_auth_routes(app):
     @app.post("/signup")
     def signup(request):
@@ -18,7 +19,7 @@ def register_auth_routes(app):
         user = create_user(body["name"], body["email"], body["password"])
         if not user:
             return json_response({"error": "Email already exists"}, 409)
-        
+
         token = create_token(user.id)
         return json_response({"token": token})
 
