@@ -1,5 +1,5 @@
 from pony.orm import Required
-from app.db.database import db
+from .database import db
 
 class User(db.Entity):
     name = Required(str)

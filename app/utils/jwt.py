@@ -1,7 +1,7 @@
 import os
 from jose import jwt, JWTError
 
-from app.core.config import settings
+from ..core.config import settings
 
 
 

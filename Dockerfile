@@ -15,12 +15,13 @@ RUN apt-get update && apt-get install -y supervisor postgresql-client
 WORKDIR /app
 
 # Copy requirements first to leverage Docker cache
+COPY requirements .
 COPY requirements.txt .
+
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Copy the rest of the application
 COPY app/ app/
-COPY config/ config/
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Copy PostgreSQL binaries from the first stage

@@ -1,6 +1,9 @@
-from app.utils.jwt import decode_token
-from app.utils.response import json_response
-from app.services.user_service import get_user_by_id
+from pony.orm import db_session
+
+from ..db.models import User
+from ..utils.jwt import decode_token
+from ..utils.response import json_response
+from ..services.user_service import get_user_by_id
 
 def register_user_routes(app):
     @app.get("/me")
@@ -19,3 +22,9 @@ def register_user_routes(app):
             return json_response({"error": "User not found"}, 404)
 
         return json_response({"id": user.id, "name": user.name, "email": user.email})
+
+    @app.get("/users")
+    @db_session
+    def get_users(request):
+        users = User.select()
+        return json_response([{"id": user.id, "name": user.name, "email": user.email} for user in users])

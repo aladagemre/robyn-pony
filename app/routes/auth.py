@@ -1,10 +1,10 @@
 import json
 from jsonschema import validate, ValidationError
 
-from app.utils.response import json_response
-from app.utils.jwt import create_token
-from app.schemas.user import user_create_schema, user_login_schema
-from app.services.user_service import create_user, get_user_by_email, verify_password
+from ..utils.response import json_response
+from ..utils.jwt import create_token
+from ..schemas.user import user_create_schema, user_login_schema
+from ..services.user_service import create_user, get_user_by_email, verify_password
 
 def register_auth_routes(app):
     @app.post("/signup")
