@@ -1,4 +1,6 @@
 run:
+	python -m app.app
+dev:
 	python -m robyn dev.py --dev
 
 black:
